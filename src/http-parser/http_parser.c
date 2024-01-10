@@ -331,7 +331,6 @@ size_t http_parser_execute (http_parser *parser,
   enum header_states header_state = (enum header_states) parser->header_state;
   uint64_t index = parser->index;
   uint64_t nread = parser->nread;
-
   if (len == 0) {
     switch (state) {
       case s_body_identity_eof:
@@ -1605,8 +1604,7 @@ const char * http_method_str (enum http_method m)
 }
 
 
-void
-http_parser_init (http_parser *parser, enum http_parser_type t)
+void http_parser_init (http_parser *parser, enum http_parser_type t)
 {
   parser->type = t;
   parser->state = (t == HTTP_REQUEST ? s_start_req : (t == HTTP_RESPONSE ? s_start_res : s_start_req_or_res));
